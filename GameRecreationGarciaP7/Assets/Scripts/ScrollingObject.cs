@@ -5,11 +5,12 @@ using UnityEngine;
 public class ScrollingObject : MonoBehaviour
 {
     private Rigidbody2D rb2d;
+    public int speed = 1;
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        rb2d.velocity = new Vector2(GameControlScript.instance.scrollSpeed, 0);
+        rb2d.velocity = new Vector2(GameControlScript.instance.scrollSpeed * speed, 0);
     }
 
     // Update is called once per frame
