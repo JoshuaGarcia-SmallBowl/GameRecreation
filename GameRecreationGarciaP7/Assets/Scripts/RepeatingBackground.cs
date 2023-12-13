@@ -6,7 +6,9 @@ public class RepeatingBackground : MonoBehaviour
 {
     private BoxCollider2D groundCollider;
     private float groundhorizontalLength;
+    public float spawndistance = 4f;
     // Start is called before the first frame update
+
     void Start()
     {
         groundCollider = GetComponent<BoxCollider2D>();
@@ -22,9 +24,9 @@ public class RepeatingBackground : MonoBehaviour
         }
         
     }
-    private void Repositionbackground()
+    public void Repositionbackground()
     {
-        Vector2 groundOffset = new Vector2 (groundhorizontalLength * 4f, 0);
+        Vector2 groundOffset = new Vector2 (groundhorizontalLength * spawndistance, 0);
         transform.position = (Vector2)transform.position + groundOffset;
     }
 

@@ -10,8 +10,10 @@ public class GameControlScript : MonoBehaviour
     public GameObject gameOverText;
     public bool gameOver = false;
     public float scrollSpeed = -1.5f;
-    private int score = 1;
+    private long score = 0;
     public Text scoreText;
+    public long income = 1;
+    private long NW = 0;
     // Start is called before the first frame update
     void Awake()
     {
@@ -40,9 +42,10 @@ public class GameControlScript : MonoBehaviour
         if (gameOver)
         {
             return;
-        }
-        score ++;
-        scoreText.text = "Net Worth:   " + score.ToString () ;
+        }      
+        NW = score + income;
+        score = NW;
+        scoreText.text = "Net Worth:   " + NW.ToString () ;
     }
 
 
@@ -50,5 +53,13 @@ public class GameControlScript : MonoBehaviour
     {
         gameOverText.SetActive(true);
         gameOver = true;
+    }
+    public void Sponsor()
+    {
+        if (gameOver)
+        {
+            return;
+        }
+        income = NW * Random.Range(2, 4);
     }
 }
