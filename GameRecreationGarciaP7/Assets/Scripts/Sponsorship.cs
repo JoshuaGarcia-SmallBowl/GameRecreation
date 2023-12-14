@@ -21,7 +21,11 @@ public class Sponsorship : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.position.x < 0)
+        {
+            Vector2 groundOffset = new Vector2(funnylength * 25f, spawny);
+            transform.position = (Vector2)groundOffset;
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -29,7 +33,7 @@ public class Sponsorship : MonoBehaviour
         {
             GameControlScript.instance.Sponsor();
             spawny = Random.Range(spawnmin, spawnmax);
-            Vector2 groundOffset = new Vector2(funnylength * 12f, spawny);
+            Vector2 groundOffset = new Vector2(funnylength * 25f, spawny);
             float spawnYPosition = Random.Range(spawnmin, spawnmax);
             transform.position = (Vector2)groundOffset;
             speedchange++;
