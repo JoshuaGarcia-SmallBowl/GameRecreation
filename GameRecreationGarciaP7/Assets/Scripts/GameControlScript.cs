@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI; 
@@ -12,8 +13,12 @@ public class GameControlScript : MonoBehaviour
     public float scrollSpeed = -1.5f;
     private long score = 0;
     public Text scoreText;
+    public Text quality;
+    public Text quantity;
     public long income = 1;
     private long NW = 0;
+    private bool graphtext = false;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -42,10 +47,19 @@ public class GameControlScript : MonoBehaviour
         if (gameOver)
         {
             return;
-        }      
+        }
         NW = score + income;
         score = NW;
         scoreText.text = "Net Worth:   " + NW.ToString () ;
+        if (graphtext == false)
+        {
+            quality.text = "";
+            quantity.text = "";
+            graphtext = true;
+        }
+        
+
+        
     }
 
 
@@ -61,5 +75,6 @@ public class GameControlScript : MonoBehaviour
             return;
         }
         income = NW * Random.Range(2, 4);
+        UnityEngine.Debug.Log(income);
     }
 }
